@@ -1,0 +1,253 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content='text/html' http-equiv='Content-Type'>
+    <title>Shoe Store: October's Shoes</title>
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <link href='/css/journal.bootstrap.min.css' rel='stylesheet'>
+    <link href='/stylesheet.css' rel='stylesheet'>
+</head>
+<body>
+    <div class='navbar navbar-default'>
+        <div class='navbar-header' id='home_link_div'>
+            <button class='navbar-toggle' data-target='.navbar-responsive-collapse' data-toggle='collapse' type='button'></button>
+            <a class='navbar-brand' href='/'>Home</a>
+        </div>
+    </div>
+    <header class='container-fluid' id='header'>
+        <div class='navbar navbar-inverse' id='header_nav'>
+            <nav class='navbar-collapse collapse navbar-inverse-collapse'>
+                <ul class='nav navbar-nav'>
+                    <li>
+                        <a href='/months/january'>January</a>
+                    </li>
+                    <li>
+                        <a href='/months/february'>February</a>
+                    </li>
+                    <li>
+                        <a href='/months/march'>March</a>
+                    </li>
+                    <li>
+                        <a href='/months/april'>April</a>
+                    </li>
+                    <li>
+                        <a href='/months/may'>May</a>
+                    </li>
+                    <li>
+                        <a href='/months/june'>June</a>
+                    </li>
+                    <li>
+                        <a href='/months/july'>July</a>
+                    </li>
+                    <li>
+                        <a href='/months/august'>August</a>
+                    </li>
+                    <li>
+                        <a href='/months/september'>September</a>
+                    </li>
+                    <li>
+                        <a href='/months/october'>October</a>
+                    </li>
+                    <li>
+                        <a href='/months/november'>November</a>
+                    </li>
+                    <li>
+                        <a href='/months/december'>December</a>
+                    </li>
+                    <li>
+                        <a href='/shoes'>All Shoes</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class='col-md-6'>
+            <form action='/remind' id='remind_email_form' method='post'>
+                <label for='remind_email_input'>Remind me of new shoes</label>
+                <input id='remind_email_input' name='email' placeholder='Email Address' type='text'>
+                <input id='remind_email_submit' type='submit'>
+            </form>
+        </div>
+        <div class='col-md-6 text-right'>
+            <form action='/promo' id='promo_code_form' method='post'>
+                <label for='promo_code_input'>Promotional Code</label>
+                <input id='promo_code_input' name='promo_code' type='text'>
+                <input id='promo_code_submit' type='submit'>
+            </form>
+        </div>
+        <div class='col-md-12'>
+            <div class='col-md-6'>
+                <a href='/issues/new'>Report An Issue</a>
+                |
+                <a href='/issues'>Issues</a>
+            </div>
+            <div class='col-md-6 text-right'>
+                <a class='text-right' href='/definition'>Problem Definition</a>
+            </div>
+        </div>
+        <div class='col-md-4 col-md-offset-4'>
+
+        </div>
+    </header>
+    <script>
+        //story1 check
+        $(document).ready(function () {
+            $('tr.shoe_result_row').each(function () {
+                $(this).find('td.shoe_result_value.shoe_description').each(function () {
+                    if ($(this).html() == "") {
+                        $('.DesCheck').hide();//description check
+                    };
+
+                });
+                $(this).find('td.shoe_result_value.shoe_price').each(function () {
+                    if ($(this).html() == "") {
+                        $('.PriCheck').hide();//price
+                    };
+
+                });
+                $(this).find('td.shoe_image').each(function () {
+                    if ($(this).html() == "") {
+                        $('.ImgCheck').hide();//image
+                    };
+
+                });
+
+                $('img').error(function () {
+                    $('.ImgCheck').hide();//error
+	            });
+
+            });
+        });
+
+        //Sotry2
+        $(document).ready(function () {
+            if($("#remind_email_input").length==0){
+                $('.TextboxCheck').hide();
+            }
+        })
+        $(document).reday(function () {
+            $("#remind_email_input").text = "123@123.com";
+            $("#remind_email_form").submit();
+            if ($(".flash.flash_success").text().length == 0) {
+                $('.SucCheck').hide();
+            };
+        });
+       
+    </script>
+    <!--Test result-->
+    <div>
+        <p>Story1 Test Result</p>
+        <p style="display:inline">Month should display a small Blurb of each shoe. </p>
+        <p class='DesCheck' style="display:inline;color:red">          Success</p><br />
+        <p style="display:inline">Each shoe should have a suggested price pricing. </p>
+        <p class='PriCheck' style="display:inline;color:red">          Success</p><br />
+        <p style="display:inline">Month should display an image each shoe being released. </p>
+        <p class='ImgCheck' style="display:inline;color:red">          Success</p><br />
+
+    </div>
+    <div>
+        <p>Story2 Test Result</p>
+        <p style="display:inline">There should be an area to submit email address. </p>
+        <p class='TextboxCheck' style="display:inline;color:red">          Success</p><br />
+        <p style="display:inline">on successful submission of a valid email address user should receive a message Thanks! We will notify you of our new shoes at this email: users email address. </p>
+        <p class='SucCheck' style="display:inline;color:red">          Success</p><br />
+    </div>
+        
+    <hr>
+    <div class='title'>
+        <h2>October's Shoes</h2>
+    </div>
+    <ul id='shoe_list'>
+        <li id='charlotte_olympia_charlotte_olympia_cherie_sandal'>
+            <div class='shoe_result'>
+                <table>
+                    <tr class='shoe_result_row'>
+                        <td class='shoe_result_label'>Brand</td>
+                        <td class='shoe_result_value shoe_brand'>
+                            <a href='/brands/Charlotte Olympia'>
+                                Charlotte Olympia
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class='shoe_result_row'>
+                        <td class='shoe_result_label'>Name</td>
+                        <td class='shoe_result_value shoe_name'>
+                            Charlotte Olympia Cherie Sandal
+                        </td>
+                    </tr>
+                    <tr class='shoe_result_row'>
+                        <td class='shoe_result_label'>Price</td>
+                        <td class='shoe_result_value shoe_price'>
+                            $1,695.00
+                        </td>
+                    </tr>
+                    <tr class='shoe_result_row'>
+                        <td class='shoe_result_label'>Description</td>
+                        <td class='shoe_result_value shoe_description'></td>
+                   
+                    </tr>
+                    <tr class='shoe_result_row'>
+                        <td class='shoe_result_label'>Release Month</td>
+                        <td class='shoe_result_value shoe_release_month'>
+                            <a href='/months/october'>
+                                October
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class='shoe_result_row'>
+                        <td class='shoe_image' colspan='2'>
+                            <img alt='' src='http://content.nordstrom.com/ImageGallery/store/product/Thumbnail/5/_7533925.jpg'>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id='jimmy_choo_jimmy_choo_kalpa_sandal'>
+            <div class='shoe_result'>
+                <table>
+                    <tr class='shoe_result_row'>
+                        <td class='shoe_result_label'>Brand</td>
+                        <td class='shoe_result_value shoe_brand'>
+                            <a href='/brands/Jimmy Choo'>
+                                Jimmy Choo
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class='shoe_result_row'>
+                        <td class='shoe_result_label'>Name</td>
+                        <td class='shoe_result_value shoe_name'>
+                            Jimmy Choo Kalpa Sandal
+                        </td>
+                    </tr>
+                    <tr class='shoe_result_row'>
+                        <td class='shoe_result_label'>Price</td>
+                        <td class='shoe_result_value shoe_price'>
+                            $1,495.00
+                        </td>
+                    </tr>
+                    <tr class='shoe_result_row'>
+                        <td class='shoe_result_label'>Description</td>
+                        <td class='shoe_result_value shoe_description'>
+                            Radiant snakeskin shimmers across the scintillating height of a fiercely feminine, ankle-strap sandal. Jimmy Choo Kalpa Sandal Jimmy Choo Jimmy Choo Sandals/Slides Shoes Adjustable strap with buckle closure. Leather upper, lining and sole. Made in Italy. Salon Shoes.
+                        </td>
+                    </tr>
+                    <tr class='shoe_result_row'>
+                        <td class='shoe_result_label'>Release Month</td>
+                        <td class='shoe_result_value shoe_release_month'>
+                            <a href='/months/october'>
+                                October
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class='shoe_result_row'>
+                        <td class='shoe_image' colspan='2'>
+                            <img alt='' src='http://content.nordstrom.com/ImageGallery/store/product/Thumbnail/19/_7499939.jpg'>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+    </ul>
+    <footer></footer>
+</body>
+</html>
